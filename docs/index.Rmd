@@ -1,0 +1,65 @@
+---
+title: "Test Gmail"
+author: "Ben Best"
+date: "11/7/2018"
+output:
+  html_document:
+    code_folding: show
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+First test using electric.blue.data@gmail.com. Fetch data as attachment in email and plot time series.
+
+```{r cars}
+library(tidyverse)
+library(here)
+library(gmailr) # install.packages("gmailr")
+library(lubridate)
+library(xts)
+library(dygraphs)
+id   <- gmailr::id
+here <- here::here
+
+# path to secret client authentication info
+secret_json <- "~/private/elecric.blue.data_thermal.data.json"
+# TODO: change to TRAVIS env var or other secret spot
+
+# authenticate
+use_secret_file(secret_json)
+
+# retreive messages
+msgs <- messages("subject:EnvLogger has:attachment")
+
+# get first message
+msg <- message(id(msgs)[1])
+
+# save attachments and return path
+csv <- save_attachments(msg, path = here("data"))
+
+# use temporary data since attachment in 1st email has no data
+csv <- here("data/test.csv")
+# TODO: send other data emails to electric.blue.data@gmail.com
+
+# read data into table
+tbl <- read_csv(csv, skip=9)
+
+# convert to eXtensible Time Series for dygraph
+x <- tbl %>%
+  mutate(
+    time = lubridate::parse_date_time(tbl$time, "m/d/y H:M")) %>%
+  arrange(time)
+x <- xts(select(x, -time), order.by=x$time)
+
+# output dygraph interactive plot
+dygraph(x, main="Temp_C") %>%
+  dyOptions(
+    colors = "red",
+    fillGraph = TRUE, fillAlpha = 0.4) %>% 
+  dyRangeSelector()
+```
+
