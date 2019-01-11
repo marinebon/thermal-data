@@ -6038,6 +6038,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -6045,9 +6048,70 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
@@ -6060,7 +6124,6 @@ $(document).ready(function () {
   window.initializeCodeFolding("show" === "show");
 });
 </script>
-
 
 
 
@@ -6096,7 +6159,7 @@ id   &lt;- gmailr::id
 here &lt;- here::here
 
 # path to secret client authentication info
-secret_json &lt;- &quot;~/private/elecric.blue.data_thermal.data.json&quot;
+secret_json &lt;- &quot;~/private/electric.blue.data_thermal.data.json&quot;
 # TODO: change to TRAVIS env var or other secret spot
 
 # authenticate
@@ -6131,8 +6194,8 @@ dygraph(x, main=&quot;Temp_C&quot;) %&gt;%
     colors = &quot;red&quot;,
     fillGraph = TRUE, fillAlpha = 0.4) %&gt;% 
   dyRangeSelector()</code></pre>
-<div id="htmlwidget-f9eec96a428c658dc11d" style="width:672px;height:480px;" class="dygraphs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f9eec96a428c658dc11d">{"x":{"attrs":{"title":"Temp_C","labels":["hour","temp"],"legend":"auto","retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60,"drawAxis":true},"y":{"drawAxis":true}},"stackedGraph":false,"fillGraph":true,"fillAlpha":0.4,"stepPlot":false,"drawPoints":false,"pointSize":1,"drawGapEdgePoints":false,"connectSeparatedPoints":false,"strokeWidth":1,"strokeBorderColor":"white","colors":["red"],"colorValue":0.5,"colorSaturation":1,"includeZero":false,"drawAxesAtZero":false,"logscale":false,"axisTickSize":3,"axisLineColor":"black","axisLineWidth":0.3,"axisLabelColor":"black","axisLabelFontSize":14,"axisLabelWidth":60,"drawGrid":true,"gridLineWidth":0.3,"rightGap":5,"digitsAfterDecimal":2,"labelsKMB":false,"labelsKMG2":false,"labelsUTC":false,"maxNumberWidth":6,"animatedZooms":false,"mobileDisableYTouch":true,"disableZoom":false,"showRangeSelector":true,"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel"},"scale":"hourly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["2018-08-09T18:02:00.000Z","2018-08-09T18:02:00.000Z","2018-08-09T18:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T02:02:00.000Z","2018-08-10T03:02:00.000Z","2018-08-10T04:02:00.000Z","2018-08-10T05:02:00.000Z","2018-08-10T06:02:00.000Z","2018-08-10T07:02:00.000Z","2018-08-10T08:02:00.000Z","2018-08-10T09:02:00.000Z","2018-08-10T10:02:00.000Z","2018-08-10T11:02:00.000Z","2018-08-10T12:02:00.000Z","2018-08-10T13:02:00.000Z","2018-08-10T14:02:00.000Z","2018-08-10T15:02:00.000Z","2018-08-10T16:02:00.000Z","2018-08-10T17:02:00.000Z","2018-08-10T18:02:00.000Z","2018-08-10T19:02:00.000Z","2018-08-10T20:02:00.000Z","2018-08-10T21:02:00.000Z","2018-08-10T22:02:00.000Z","2018-08-10T23:02:00.000Z","2018-08-11T00:02:00.000Z","2018-08-11T01:02:00.000Z","2018-08-11T02:02:00.000Z","2018-08-11T03:02:00.000Z","2018-08-11T04:02:00.000Z","2018-08-11T05:02:00.000Z","2018-08-11T06:02:00.000Z","2018-08-11T07:02:00.000Z","2018-08-11T08:02:00.000Z","2018-08-11T09:02:00.000Z","2018-08-11T10:02:00.000Z","2018-08-11T11:02:00.000Z","2018-08-11T12:02:00.000Z","2018-08-11T13:02:00.000Z","2018-08-11T14:02:00.000Z","2018-08-11T15:02:00.000Z","2018-08-11T16:02:00.000Z","2018-08-11T17:02:00.000Z","2018-08-11T18:02:00.000Z","2018-08-11T19:02:00.000Z","2018-08-11T20:02:00.000Z"],[23.02539234,20.16042184,21.60836782,23.13474103,19.63925694,26.91990748,19.12109814,20.92536783,20.73300747,25.97991106,22.20473903,21.65651841,19.42450769,25.16227777,20.38922249,21.61878698,22.78701066,20.31211669,19.4132031,25.85205029,20.76892345,23.31510967,18.38335024,18.62143155,23.72232806,19.15849402,27.23085928,23.55239995,19.31320774,19.10202836,27.48882856,27.41905222,20.56165768,23.32579606,24.96781308,19.31358484,18.95189609,24.53489367,18.36980195,27.61728799,22.85676838,20.28470499,24.26272903,26.92459742,24.28447486,26.85136018,22.27647984,27.10429631,26.76811345,27.26087032,22.60161597,21.35651551,24.21936531,18.38401929,23.31184463,21.67817849,19.24246197,27.8378871,18.88348773,23.91271845,23.92019466,24.01649526,25.64911156,18.08930986,27.061212,25.86921107,27.2073862]],"fixedtz":false,"tzone":"UTC"},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
+<div id="htmlwidget-8ebd3d1efd1a8ae26e28" style="width:672px;height:480px;" class="dygraphs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8ebd3d1efd1a8ae26e28">{"x":{"attrs":{"title":"Temp_C","labels":["hour","temp"],"legend":"auto","retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60,"drawAxis":true},"y":{"drawAxis":true}},"stackedGraph":false,"fillGraph":true,"fillAlpha":0.4,"stepPlot":false,"drawPoints":false,"pointSize":1,"drawGapEdgePoints":false,"connectSeparatedPoints":false,"strokeWidth":1,"strokeBorderColor":"white","colors":["red"],"colorValue":0.5,"colorSaturation":1,"includeZero":false,"drawAxesAtZero":false,"logscale":false,"axisTickSize":3,"axisLineColor":"black","axisLineWidth":0.3,"axisLabelColor":"black","axisLabelFontSize":14,"axisLabelWidth":60,"drawGrid":true,"gridLineWidth":0.3,"rightGap":5,"digitsAfterDecimal":2,"labelsKMB":false,"labelsKMG2":false,"labelsUTC":false,"maxNumberWidth":6,"animatedZooms":false,"mobileDisableYTouch":true,"disableZoom":false,"showRangeSelector":true,"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel"},"scale":"hourly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["2018-08-09T18:02:00.000Z","2018-08-09T18:02:00.000Z","2018-08-09T18:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T19:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T20:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T21:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T22:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-09T23:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T00:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T01:02:00.000Z","2018-08-10T02:02:00.000Z","2018-08-10T03:02:00.000Z","2018-08-10T04:02:00.000Z","2018-08-10T05:02:00.000Z","2018-08-10T06:02:00.000Z","2018-08-10T07:02:00.000Z","2018-08-10T08:02:00.000Z","2018-08-10T09:02:00.000Z","2018-08-10T10:02:00.000Z","2018-08-10T11:02:00.000Z","2018-08-10T12:02:00.000Z","2018-08-10T13:02:00.000Z","2018-08-10T14:02:00.000Z","2018-08-10T15:02:00.000Z","2018-08-10T16:02:00.000Z","2018-08-10T17:02:00.000Z","2018-08-10T18:02:00.000Z","2018-08-10T19:02:00.000Z","2018-08-10T20:02:00.000Z","2018-08-10T21:02:00.000Z","2018-08-10T22:02:00.000Z","2018-08-10T23:02:00.000Z","2018-08-11T00:02:00.000Z","2018-08-11T01:02:00.000Z","2018-08-11T02:02:00.000Z","2018-08-11T03:02:00.000Z","2018-08-11T04:02:00.000Z","2018-08-11T05:02:00.000Z","2018-08-11T06:02:00.000Z","2018-08-11T07:02:00.000Z","2018-08-11T08:02:00.000Z","2018-08-11T09:02:00.000Z","2018-08-11T10:02:00.000Z","2018-08-11T11:02:00.000Z","2018-08-11T12:02:00.000Z","2018-08-11T13:02:00.000Z","2018-08-11T14:02:00.000Z","2018-08-11T15:02:00.000Z","2018-08-11T16:02:00.000Z","2018-08-11T17:02:00.000Z","2018-08-11T18:02:00.000Z","2018-08-11T19:02:00.000Z","2018-08-11T20:02:00.000Z"],[23.02539234,20.16042184,21.60836782,23.13474103,19.63925694,26.91990748,19.12109814,20.92536783,20.73300747,25.97991106,22.20473903,21.65651841,19.42450769,25.16227777,20.38922249,21.61878698,22.78701066,20.31211669,19.4132031,25.85205029,20.76892345,23.31510967,18.38335024,18.62143155,23.72232806,19.15849402,27.23085928,23.55239995,19.31320774,19.10202836,27.48882856,27.41905222,20.56165768,23.32579606,24.96781308,19.31358484,18.95189609,24.53489367,18.36980195,27.61728799,22.85676838,20.28470499,24.26272903,26.92459742,24.28447486,26.85136018,22.27647984,27.10429631,26.76811345,27.26087032,22.60161597,21.35651551,24.21936531,18.38401929,23.31184463,21.67817849,19.24246197,27.8378871,18.88348773,23.91271845,23.92019466,24.01649526,25.64911156,18.08930986,27.061212,25.86921107,27.2073862]],"fixedtz":false,"tzone":"UTC"},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
 
 
 

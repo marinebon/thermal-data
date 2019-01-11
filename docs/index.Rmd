@@ -26,7 +26,7 @@ id   <- gmailr::id
 here <- here::here
 
 # path to secret client authentication info
-secret_json <- "~/private/elecric.blue.data_thermal.data.json"
+secret_json <- "~/private/electric.blue.data_thermal.data.json"
 # TODO: change to TRAVIS env var or other secret spot
 
 # authenticate
