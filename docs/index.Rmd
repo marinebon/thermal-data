@@ -5,7 +5,7 @@ date: "11/7/2018"
 output:
   html_document:
     code_folding: show
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
@@ -59,7 +59,8 @@ x <- xts(select(x, -time), order.by=x$time)
 dygraph(x, main="Temp_C") %>%
   dyOptions(
     colors = "red",
-    fillGraph = TRUE, fillAlpha = 0.4) %>% 
+    fillGraph = TRUE, fillAlpha = 0.4) %>%
   dyRangeSelector()
-```
 
+# TODO: output html `htmlwidgets::saveWidget(p, "test.html")`
+```
